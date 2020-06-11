@@ -1,0 +1,16 @@
+.mainContainer {
+  display: flex;
+  margin: 0 auto;
+  max-width: 800px;
+  justify-content: center;
+  padding: 50px;
+}
+.searchContainer {
+  flex: 1 0 500px;
+  text-align: center;
+}
+
+.letterContainer {
+  flex: 2 0 40px;
+  text-align: center;
+}
