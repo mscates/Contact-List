@@ -1,31 +1,23 @@
-import React, { useState } from "react"
+import React from "react"
 import styles from "./Letters.module.css"
+import { data } from "./FakeData"
 
-const Letters = (props) => {
+const Letters = ({ contacts }) => {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
-  const [number, setNumber] = useState(null)
-  const [showNumber, setShowNumber] = useState(false)
-
-  const showAmountLetters = (e) => {
-    const newNumber = props.letterData[e.target.textContent]
-      ? props.letterData[e.target.textContent].length
-      : null
-    setNumber({ number, [e.target.textContent]: newNumber })
-    setShowNumber(true)
-  }
+  let letterData = data()
 
   return (
     <div>
       {letters.map((letter, id) => (
         <div
           key={id}
-          className={styles.letter}
-          onMouseOver={showAmountLetters}
-          onMouseLeave={() => setShowNumber(false)}
-          onClick={props.letterClick}
+          className={
+            contacts[letter].length !== 0
+              ? styles.letterBlack
+              : styles.letterGray
+          }
         >
           {letter}
-          <div>{showNumber && number[letter]}</div>
         </div>
       ))}
     </div>

@@ -1,16 +1,22 @@
 .mainContainer {
-  display: flex;
   margin: 0 auto;
   max-width: 800px;
-  justify-content: center;
   padding: 50px;
 }
+.searchContainer,
+.letterContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
 .searchContainer {
-  flex: 1 0 500px;
-  text-align: center;
+  align-items: center;
 }
 
-.letterContainer {
-  flex: 2 0 40px;
-  text-align: center;
+.add {
+  font-size: 40px;
+}
+.letters {
+  background-color: #bebebe;
+  padding: 3px 6px;
 }
