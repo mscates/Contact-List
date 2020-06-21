@@ -36,7 +36,7 @@ const Contacts = () => {
             </div>
             {contacts[letter].map((contact) => {
               return (
-                <div key={contact.id}>
+                <div className={styles.contact} key={contact.id}>
                   {contact.firstName} {contact.lastName}
                 </div>
               )

@@ -1,7 +1,11 @@
 .mainContainer {
-  margin: 0 auto;
+  margin: 40px auto;
   max-width: 800px;
   padding: 50px;
+  box-shadow: 0 0 10px black;
+  background: #e6ddde;
+  color: #443235;
+  font-family: "Monserrat";
 }
 .searchContainer,
 .letterContainer {
@@ -18,9 +22,10 @@
 }
 
 .letters {
-  background-color: #e27d60;
-  padding: 3px 6px;
+  border-bottom: 2px solid black;
+  padding: 3px 6px 3px 0;
   margin: 10px 0;
+  font-weight: bold;
 }
 
 .contactGroup {
@@ -30,4 +35,8 @@
 
 .lettersHidden {
   display: none;
+}
+
+.contact {
+  margin-bottom: 3px;
 }
