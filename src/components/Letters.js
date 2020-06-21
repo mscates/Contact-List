@@ -1,10 +1,8 @@
 import React from "react"
 import styles from "./Letters.module.css"
-import { data } from "./FakeData"
 
 const Letters = ({ contacts }) => {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
-  let letterData = data()
 
   return (
     <div>

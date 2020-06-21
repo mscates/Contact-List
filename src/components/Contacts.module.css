@@ -16,7 +16,18 @@
 .add {
   font-size: 40px;
 }
+
 .letters {
-  background-color: #bebebe;
+  background-color: #e27d60;
   padding: 3px 6px;
+  margin: 10px 0;
+}
+
+.contactGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.lettersHidden {
+  display: none;
 }
