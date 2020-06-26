@@ -4,6 +4,7 @@ import uuid from "react-uuid"
 import { data } from "./FakeData"
 import Letters from "./Letters"
 import styles from "./Contacts.module.css"
+import ContactsCategory from "../components/ContactsCategory"
 
 const Contacts = () => {
   const [contacts, setContact] = useState(data())
@@ -23,26 +24,7 @@ const Contacts = () => {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
     const displayItem = letters.map((letter) => {
       if (contacts.hasOwnProperty(letter)) {
-        return (
-          <div key={letter}>
-            <div
-              className={
-                contacts[letter].length !== 0
-                  ? [styles.letters]
-                  : [styles.lettersHidden]
-              }
-            >
-              {letter}
-            </div>
-            {contacts[letter].map((contact) => {
-              return (
-                <div className={styles.contact} key={contact.id}>
-                  {contact.firstName} {contact.lastName}
-                </div>
-              )
-            })}
-          </div>
-        )
+        return <ContactsCategory contacts={contacts} letter={letter} />
       }
     })
 
@@ -56,9 +38,9 @@ const Contacts = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.searchContainer}>
-        <h1>Contacts</h1>
+        <h1 className={styles.title}>Contacts</h1>
         <div onClick={handleShowForm} className={styles.add}>
-          +
+          Add Contact
         </div>
       </div>
       <div className={styles.letterContainer}>

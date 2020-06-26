@@ -2,10 +2,10 @@
   margin: 40px auto;
   max-width: 800px;
   padding: 50px;
-  box-shadow: 0 0 10px black;
-  background: #e6ddde;
-  color: #443235;
+  /* box-shadow: 0 0 10px black; */
+
   font-family: "Monserrat";
+  color: #fff;
 }
 .searchContainer,
 .letterContainer {
@@ -18,14 +18,19 @@
 }
 
 .add {
-  font-size: 40px;
+  border: 1px solid #f7882f;
+  font-size: 20px;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #f7882f;
 }
 
 .letters {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #dcc7aa;
   padding: 3px 6px 3px 0;
   margin: 10px 0;
   font-weight: bold;
+  font-size: 2em;
 }
 
 .contactGroup {
@@ -39,4 +44,10 @@
 
 .contact {
   margin-bottom: 3px;
+  font-size: 1.5em;
+}
+
+.title {
+  color: #f7882f;
+  font-size: 2.5em;
 }

@@ -1,11 +1,11 @@
 import React from "react"
 
-const Contact = ({ contacts }) => {
+const Contact = ({ contact }) => {
   return (
     <div>
-      {contacts.map((contact) => (
-        <h2>{`Name: ${contact.firstName} ${contact.lastName}`}</h2>
-      ))}
+      <h2>
+        {contact.firstName} {contact.lastName}
+      </h2>
     </div>
   )
 }
