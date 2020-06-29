@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import styles from "./ContactForm.module.css"
 
 const ContactForm = ({ addContact }) => {
   const [contactName, setContactName] = useState({
@@ -22,27 +23,31 @@ const ContactForm = ({ addContact }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="firstName">
-        First Name:
+      <div className={styles.formItem}>
+        <label className={styles.formLabel} htmlFor="firstName">
+          First Name:
+        </label>
         <input
+          className={styles.formInput}
           id="firstName"
           value={contactName.firstName}
           onChange={handleChange}
           name="firstName"
         />
-      </label>
-      <br />
-      <label htmlFor="lastName">
-        Last Name:
+      </div>
+      <div className={styles.formItem}>
+        <label className={styles.formLabel} htmlFor="lastName">
+          Last Name:
+        </label>
         <input
+          className={styles.formInput}
           id="lastName"
           value={contactName.lastName}
           onChange={handleChange}
           name="lastName"
         />
-      </label>
-      <br />
-      <button>Submit</button>
+      </div>
+      <button className={styles.formButton}>Submit</button>
     </form>
   )
 }

@@ -1,0 +1,34 @@
+.formItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.formItem > * {
+  align-self: flex-start;
+}
+
+.formLabel {
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.formInput {
+  width: 100%;
+  max-width: 425px;
+  padding: 0.8em;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  outline: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.formInput:focus {
+  background: #f9f9f9;
+}
+
+.formButton {
+  margin-top: 10px;
+}
