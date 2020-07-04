@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import uuid from "react-uuid"
-import { data } from "./FakeData"
+import { data, contactData } from "./FakeData"
 import Letters from "./Letters"
 import styles from "./Contacts.module.css"
 import ContactsCategory from "../components/ContactsCategory"
 import Modal from "../components/Modal"
 
 const Contacts = () => {
-  const [contacts, setContact] = useState(data())
+  const [contacts, setContact] = useState(data(contactData()))
   const [modalProps, setModalProps] = useState("Add Contact")
 
   const addContact = (contact) => {
@@ -20,12 +20,26 @@ const Contacts = () => {
     })
   }
 
+  const deleteContact = (id, lastName) => {
+    const firstInitial = lastName.charAt(0)
+    contacts[firstInitial] = contacts[firstInitial].filter(
+      (item) => item.id !== id
+    )
+    console.log(contacts)
+    setContact(contacts)
+  }
+
   const renderContacts = () => {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
     const displayItem = letters.map((letter) => {
       if (contacts.hasOwnProperty(letter)) {
         return (
-          <ContactsCategory contacts={contacts} key={letter} letter={letter} />
+          <ContactsCategory
+            deleteContact={deleteContact}
+            contacts={contacts}
+            key={letter}
+            letter={letter}
+          />
         )
       }
     })
