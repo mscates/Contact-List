@@ -21,12 +21,14 @@ const Contacts = () => {
   }
 
   const deleteContact = (id, lastName) => {
-    const firstInitial = lastName.charAt(0)
-    contacts[firstInitial] = contacts[firstInitial].filter(
-      (item) => item.id !== id
-    )
-    console.log(contacts)
-    setContact(contacts)
+    const firstInitial = lastName.charAt(0).toUpperCase()
+    // console.log(id, lastName)
+    // console.log(firstInitial)
+    // console.log(contacts[firstInitial].filter((item) => item.id !== id))
+    setContact({
+      ...contacts,
+      [firstInitial]: contacts[firstInitial].filter((item) => item.id !== id),
+    })
   }
 
   const renderContacts = () => {
