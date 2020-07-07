@@ -5,10 +5,13 @@ import Letters from "./Letters"
 import styles from "./Contacts.module.css"
 import ContactsCategory from "../components/ContactsCategory"
 import Modal from "../components/Modal"
+import DisplayContact from "../components/DisplayContact"
 
 const Contacts = () => {
   const [contacts, setContact] = useState(data(contactData()))
   const [modalProps, setModalProps] = useState("Add Contact")
+  const [displayContact, setDisplayContact] = useState(false)
+  const [currentContact, setCurrentContact] = useState()
 
   const addContact = (contact) => {
     const searchLetter = contact.lastName.charAt(0).toUpperCase()
@@ -22,13 +25,18 @@ const Contacts = () => {
 
   const deleteContact = (id, lastName) => {
     const firstInitial = lastName.charAt(0).toUpperCase()
-    // console.log(id, lastName)
-    // console.log(firstInitial)
-    // console.log(contacts[firstInitial].filter((item) => item.id !== id))
     setContact({
       ...contacts,
       [firstInitial]: contacts[firstInitial].filter((item) => item.id !== id),
     })
+  }
+
+  const showContact = (id, lastName) => {
+    const firstInitial = lastName.charAt(0).toUpperCase()
+    setDisplayContact(true)
+    setCurrentContact(
+      contacts[firstInitial].filter((item) => item.id === id)[0]
+    )
   }
 
   const renderContacts = () => {
@@ -37,7 +45,7 @@ const Contacts = () => {
       if (contacts.hasOwnProperty(letter)) {
         return (
           <ContactsCategory
-            deleteContact={deleteContact}
+            showContact={showContact}
             contacts={contacts}
             key={letter}
             letter={letter}
@@ -56,7 +64,13 @@ const Contacts = () => {
         <Modal modalProps={modalProps} addContact={addContact} />
       </div>
       <div className={styles.letterContainer}>
-        <div className={styles.contactGroup}>{renderContacts()}</div>
+        <div className={styles.contactGroup}>
+          {displayContact ? (
+            <DisplayContact currentContact={currentContact} />
+          ) : (
+            renderContacts()
+          )}
+        </div>
         <Letters contacts={contacts} />
       </div>
     </div>

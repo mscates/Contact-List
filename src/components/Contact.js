@@ -1,9 +1,9 @@
 import React from "react"
 
-const Contact = ({ contact: { id, firstName, lastName }, deleteContact }) => {
+const Contact = ({ contact: { id, firstName, lastName }, showContact }) => {
   return (
     <div>
-      <h2 onClick={() => deleteContact(id, lastName)}>
+      <h2 onClick={() => showContact(id, lastName)}>
         {firstName} {lastName}
       </h2>
     </div>

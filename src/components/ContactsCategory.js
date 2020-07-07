@@ -3,7 +3,7 @@ import "../components/Contact"
 import styles from "./Contacts.module.css"
 import Contact from "../components/Contact"
 
-const ContactsCategory = ({ contacts, letter, deleteContact }) => {
+const ContactsCategory = ({ contacts, letter, showContact }) => {
   return (
     <div key={letter}>
       <div
@@ -18,7 +18,7 @@ const ContactsCategory = ({ contacts, letter, deleteContact }) => {
       {contacts[letter].map((contact) => {
         return (
           <div className={styles.contact} key={contact.id}>
-            <Contact deleteContact={deleteContact} contact={contact} />
+            <Contact showContact={showContact} contact={contact} />
           </div>
         )
       })}
