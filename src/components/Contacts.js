@@ -12,6 +12,7 @@ const Contacts = () => {
   const [modalProps, setModalProps] = useState("Add Contact")
   const [displayContact, setDisplayContact] = useState(false)
   const [currentContact, setCurrentContact] = useState()
+  const [showAddContact, setShowAddContact] = useState(false)
 
   const addContact = (contact) => {
     const searchLetter = contact.lastName.charAt(0).toUpperCase()
@@ -34,9 +35,15 @@ const Contacts = () => {
   const showContact = (id, lastName) => {
     const firstInitial = lastName.charAt(0).toUpperCase()
     setDisplayContact(true)
+    setShowAddContact(false)
     setCurrentContact(
       contacts[firstInitial].filter((item) => item.id === id)[0]
     )
+  }
+
+  const closeContact = () => {
+    setDisplayContact(false)
+    setShowAddContact(true)
   }
 
   const renderContacts = () => {
@@ -61,12 +68,20 @@ const Contacts = () => {
     <div className={styles.mainContainer}>
       <div className={styles.searchContainer}>
         <h1 className={styles.title}>Contacts</h1>
-        <Modal modalProps={modalProps} addContact={addContact} />
+        <Modal
+          modalProps={modalProps}
+          showAddContact={showAddContact}
+          addContact={addContact}
+        />
       </div>
       <div className={styles.letterContainer}>
         <div className={styles.contactGroup}>
           {displayContact ? (
-            <DisplayContact currentContact={currentContact} />
+            <DisplayContact
+              showAddContact={showAddContact}
+              closeContact={closeContact}
+              currentContact={currentContact}
+            />
           ) : (
             renderContacts()
           )}
