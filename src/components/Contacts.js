@@ -30,6 +30,7 @@ const Contacts = () => {
       ...contacts,
       [firstInitial]: contacts[firstInitial].filter((item) => item.id !== id),
     })
+    setDisplayContact(false)
   }
 
   const showContact = (id, lastName) => {
@@ -81,6 +82,7 @@ const Contacts = () => {
               showAddContact={showAddContact}
               closeContact={closeContact}
               currentContact={currentContact}
+              deleteContact={deleteContact}
             />
           ) : (
             renderContacts()

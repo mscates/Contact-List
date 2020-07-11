@@ -2,17 +2,19 @@ import React from "react"
 import styles from "./DisplayContact.module.css"
 
 const DisplayContact = ({
-  currentContact: { firstName, lastName },
+  currentContact: { id, firstName, lastName },
   closeContact,
-}) => {
-  return (
-    <div className={styles.container}>
-      <button onClick={closeContact}>X</button>
-      <h2>
-        {firstName} {lastName}
-      </h2>
-    </div>
-  )
-}
+  deleteContact,
+  editContact,
+}) => (
+  <div className={styles.container}>
+    <button onClick={closeContact}>X</button>
+    <h2>
+      {firstName} {lastName}
+    </h2>
+    <button onClick={() => deleteContact(id, lastName)}>Delete</button>
+    <button onClick={() => editContact(id, lastName)}>Edit</button>
+  </div>
+)
 
 export default DisplayContact
