@@ -12,7 +12,7 @@ const Contacts = () => {
   const [modalProps, setModalProps] = useState("Add Contact")
   const [displayContact, setDisplayContact] = useState(false)
   const [currentContact, setCurrentContact] = useState()
-  const [showAddContact, setShowAddContact] = useState(false)
+  const [showAddContact, setShowAddContact] = useState(true)
 
   const addContact = (contact) => {
     const searchLetter = contact.lastName.charAt(0).toUpperCase()
@@ -31,6 +31,7 @@ const Contacts = () => {
       [firstInitial]: contacts[firstInitial].filter((item) => item.id !== id),
     })
     setDisplayContact(false)
+    setShowAddContact(true)
   }
 
   const showContact = (id, lastName) => {
