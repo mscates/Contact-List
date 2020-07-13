@@ -1,9 +1,8 @@
 .mainContainer {
-  margin: 40px auto;
-  max-width: 800px;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
   padding: 50px;
-  /* box-shadow: 0 0 10px black; */
-
   font-family: "Monserrat";
   color: #212324;
 }
@@ -38,9 +37,4 @@
 .contact {
   margin-bottom: 3px;
   font-size: 1.5em;
-}
-
-.title {
-  color: #fff;
-  font-size: 2.5em;
 }

@@ -4,12 +4,12 @@ import { data, contactData } from "./FakeData"
 import Letters from "./Letters"
 import styles from "./Contacts.module.css"
 import ContactsCategory from "../components/ContactsCategory"
-import Modal from "../components/Modal"
+import ContactForm from "../components/ContactForm"
 import DisplayContact from "../components/DisplayContact"
 
 const Contacts = () => {
   const [contacts, setContact] = useState(data(contactData()))
-  const [modalProps, setModalProps] = useState("Add Contact")
+  const [showForm, setShowForm] = useState(false)
   const [displayContact, setDisplayContact] = useState(false)
   const [currentContact, setCurrentContact] = useState()
   const [showAddContact, setShowAddContact] = useState(true)
@@ -48,6 +48,10 @@ const Contacts = () => {
     setShowAddContact(true)
   }
 
+  const handleShowForm = () => {
+    setShowForm(true)
+  }
+
   const renderContacts = () => {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
     const displayItem = letters.map((letter) => {
@@ -69,16 +73,13 @@ const Contacts = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.searchContainer}>
-        <h1 className={styles.title}>Contacts</h1>
-        <Modal
-          modalProps={modalProps}
-          showAddContact={showAddContact}
-          addContact={addContact}
-        />
+        <button onClick={handleShowForm}>Add Contact</button>
       </div>
       <div className={styles.letterContainer}>
         <div className={styles.contactGroup}>
-          {displayContact ? (
+          {showForm ? (
+            <ContactForm addContact={addContact} />
+          ) : displayContact ? (
             <DisplayContact
               showAddContact={showAddContact}
               closeContact={closeContact}
