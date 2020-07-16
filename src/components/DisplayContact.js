@@ -13,7 +13,7 @@ const DisplayContact = ({
       {firstName} {lastName}
     </h2>
     <button onClick={() => deleteContact(id, lastName)}>Delete</button>
-    <button onClick={() => editContact(id, lastName)}>Edit</button>
+    <button onClick={() => editContact()}>Edit</button>
   </div>
 )
 

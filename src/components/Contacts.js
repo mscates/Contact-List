@@ -13,6 +13,13 @@ const Contacts = () => {
   const [displayContact, setDisplayContact] = useState(false)
   const [currentContact, setCurrentContact] = useState()
   const [showAddContact, setShowAddContact] = useState(true)
+  const [editContact, setEditContact] = useState(false)
+  const currentContactState = { id: null, firstName: "", lastName: "" }
+
+  const editCurrentContact = () => {
+    setEditContact(true)
+    console.log("editing mode")
+  }
 
   const addContact = (contact) => {
     const searchLetter = contact.lastName.charAt(0).toUpperCase()
@@ -84,6 +91,7 @@ const Contacts = () => {
               closeContact={closeContact}
               currentContact={currentContact}
               deleteContact={deleteContact}
+              editContact={editCurrentContact}
             />
           ) : (
             renderContacts()
