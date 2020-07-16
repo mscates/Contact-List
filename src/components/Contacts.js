@@ -67,14 +67,13 @@ const Contacts = () => {
       }
     })
 
-    return <div>{displayItem}</div>
+    return <div className={styles.contactsList}>{displayItem}</div>
   }
 
   return (
     <div className={styles.mainContainer}>
-      <div className={styles.searchContainer}>
-        <button onClick={handleShowForm}>Add Contact</button>
-      </div>
+      {/* <button onClick={handleShowForm}>Add Contact</button> */}
+
       <div className={styles.letterContainer}>
         <div className={styles.contactGroup}>
           {showForm ? (
@@ -90,7 +89,7 @@ const Contacts = () => {
             renderContacts()
           )}
         </div>
-        <Letters contacts={contacts} />
+        {/* <Letters contacts={contacts} /> */}
       </div>
     </div>
   )

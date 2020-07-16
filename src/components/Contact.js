@@ -3,9 +3,9 @@ import React from "react"
 const Contact = ({ contact: { id, firstName, lastName }, showContact }) => {
   return (
     <div>
-      <h2 onClick={() => showContact(id, lastName)}>
+      <h4 onClick={() => showContact(id, lastName)}>
         {firstName} {lastName}
-      </h2>
+      </h4>
     </div>
   )
 }

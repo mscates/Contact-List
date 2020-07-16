@@ -5,16 +5,15 @@ import Contact from "../components/Contact"
 
 const ContactsCategory = ({ contacts, letter, showContact }) => {
   return (
-    <div key={letter}>
-      <div
-        className={
-          contacts[letter].length !== 0
-            ? [styles.letters]
-            : [styles.lettersHidden]
-        }
-      >
-        {letter}
-      </div>
+    <div
+      className={
+        contacts[letter].length === 0
+          ? [styles.lettersHidden]
+          : [styles.contactContainer]
+      }
+      key={letter}
+    >
+      <div className={styles.letters}>{letter}</div>
       {contacts[letter].map((contact) => {
         return (
           <div className={styles.contact} key={contact.id}>

@@ -25,9 +25,10 @@
   color: #3b3e41;
 }
 
-.contactGroup {
+.contactsList {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .lettersHidden {
@@ -37,4 +38,11 @@
 .contact {
   margin-bottom: 3px;
   font-size: 1.5em;
+}
+
+.contactContainer {
+  padding: 15px;
+  margin: 20px;
+  min-width: 300px;
+  background-color: rgb(242, 238, 238);
 }
