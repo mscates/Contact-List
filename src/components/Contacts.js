@@ -18,7 +18,6 @@ const Contacts = () => {
 
   const editCurrentContact = () => {
     setEditContact(true)
-    console.log("editing mode")
   }
 
   const addContact = (contact) => {
@@ -84,6 +83,8 @@ const Contacts = () => {
       <div className={styles.letterContainer}>
         <div className={styles.contactGroup}>
           {showForm ? (
+            <ContactForm addContact={addContact} />
+          ) : displayContact && editContact ? (
             <ContactForm addContact={addContact} />
           ) : displayContact ? (
             <DisplayContact
