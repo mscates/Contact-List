@@ -6,6 +6,8 @@ import styles from "./Contacts.module.css"
 import ContactsCategory from "../components/ContactsCategory"
 import ContactForm from "../components/ContactForm"
 import DisplayContact from "../components/DisplayContact"
+import Button from "./Button"
+import UpdateContactForm from "../components/UpdateContactForm"
 
 const Contacts = () => {
   const [contacts, setContact] = useState(data(contactData()))
@@ -14,10 +16,10 @@ const Contacts = () => {
   const [currentContact, setCurrentContact] = useState()
   const [showAddContact, setShowAddContact] = useState(true)
   const [editContact, setEditContact] = useState(false)
-  const currentContactState = { id: null, firstName: "", lastName: "" }
 
   const editCurrentContact = () => {
     setEditContact(true)
+    setShowForm(false)
   }
 
   const addContact = (contact) => {
@@ -49,13 +51,19 @@ const Contacts = () => {
     )
   }
 
+  const handleShowForm = () => {
+    setShowForm(true)
+  }
+
+  const removeForm = () => {
+    console.log("remove form")
+    setShowForm(false)
+    setEditContact(false)
+  }
+
   const closeContact = () => {
     setDisplayContact(false)
     setShowAddContact(true)
-  }
-
-  const handleShowForm = () => {
-    setShowForm(true)
   }
 
   const renderContacts = () => {
@@ -78,21 +86,29 @@ const Contacts = () => {
 
   return (
     <div className={styles.mainContainer}>
-      {/* <button onClick={handleShowForm}>Add Contact</button> */}
+      <Button handleClick={handleShowForm} text="Add Contact" />
 
       <div className={styles.letterContainer}>
         <div className={styles.contactGroup}>
           {showForm ? (
-            <ContactForm addContact={addContact} />
+            <ContactForm
+              handleShowForm={handleShowForm}
+              addContact={addContact}
+              removeForm={removeForm}
+            />
           ) : displayContact && editContact ? (
-            <ContactForm addContact={addContact} />
+            <UpdateContactForm
+              removeForm={removeForm}
+              addContact={addContact}
+              currentContact={currentContact}
+            />
           ) : displayContact ? (
             <DisplayContact
               showAddContact={showAddContact}
               closeContact={closeContact}
               currentContact={currentContact}
               deleteContact={deleteContact}
-              editContact={editCurrentContact}
+              editCurrentContact={editCurrentContact}
             />
           ) : (
             renderContacts()

@@ -1,19 +1,20 @@
 import React from "react"
 import styles from "./DisplayContact.module.css"
+import Button from "./Button"
 
 const DisplayContact = ({
   currentContact: { id, firstName, lastName },
   closeContact,
   deleteContact,
-  editContact,
+  editCurrentContact,
 }) => (
   <div className={styles.container}>
-    <button onClick={closeContact}>X</button>
+    <Button handleClick={closeContact} text="Close" />
     <h2>
       {firstName} {lastName}
     </h2>
-    <button onClick={() => deleteContact(id, lastName)}>Delete</button>
-    <button onClick={() => editContact()}>Edit</button>
+    <Button handleClick={() => deleteContact(id, lastName)} text="Delete" />
+    <Button handleClick={() => editCurrentContact()} text="Edit" />
   </div>
 )
 

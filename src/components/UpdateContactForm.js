@@ -2,7 +2,12 @@ import React, { useState } from "react"
 import styles from "./ContactForm.module.css"
 import Button from "./Button"
 
-const ContactForm = ({ addContact, removeForm, handleShowForm }) => {
+const ContactForm = ({
+  currentContact,
+  addContact,
+  removeForm,
+  handleShowForm,
+}) => {
   const [contactName, setContactName] = useState({
     firstName: "",
     lastName: "",
@@ -32,7 +37,7 @@ const ContactForm = ({ addContact, removeForm, handleShowForm }) => {
         <input
           className={styles.formInput}
           id="firstName"
-          value={contactName.firstName}
+          value={currentContact.firstName}
           onChange={handleChange}
           name="firstName"
         />
@@ -44,7 +49,7 @@ const ContactForm = ({ addContact, removeForm, handleShowForm }) => {
         <input
           className={styles.formInput}
           id="lastName"
-          value={contactName.lastName}
+          value={currentContact.lastName}
           onChange={handleChange}
           name="lastName"
         />
