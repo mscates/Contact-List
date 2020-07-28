@@ -2,30 +2,29 @@ import React, { useState } from "react"
 import styles from "./ContactForm.module.css"
 import Button from "./Button"
 
-const ContactForm = ({
+const UpdateContactForm = ({
   currentContact,
-  addContact,
   removeForm,
-  handleShowForm,
+  handleUpdateContact,
 }) => {
-  const [contactName, setContactName] = useState({
-    firstName: "",
-    lastName: "",
+  const [updateName, setUpdateName] = useState({
+    firstName: currentContact.firstName,
+    lastName: currentContact.lastName,
+    id: currentContact.id,
   })
 
   const handleChange = (e) => {
     const { value, name } = e.target
-    setContactName({
-      ...contactName,
+    setUpdateName({
+      ...updateName,
       [name]: value,
     })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addContact(contactName)
-    setContactName({ firstName: "", lastName: "" })
-    handleShowForm(false)
+    handleUpdateContact(updateName, currentContact)
+    setUpdateName({ firstName: "", lastName: "" })
   }
 
   return (
@@ -37,7 +36,7 @@ const ContactForm = ({
         <input
           className={styles.formInput}
           id="firstName"
-          value={currentContact.firstName}
+          value={updateName.firstName}
           onChange={handleChange}
           name="firstName"
         />
@@ -49,15 +48,15 @@ const ContactForm = ({
         <input
           className={styles.formInput}
           id="lastName"
-          value={currentContact.lastName}
+          value={updateName.lastName}
           onChange={handleChange}
           name="lastName"
         />
       </div>
-      <Button className={styles.formButton} type="submit" text="Submit" />
+      <Button className={styles.formButton} type="submit" text="Update" />
       <Button handleClick={removeForm} text="Cancel" />
     </form>
   )
 }
 
-export default ContactForm
+export default UpdateContactForm

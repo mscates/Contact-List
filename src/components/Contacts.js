@@ -32,6 +32,26 @@ const Contacts = () => {
     })
   }
 
+  const handleUpdateContact = (updatedContact, currentContact) => {
+    console.log(updatedContact)
+    const firstInitial = currentContact.lastName.charAt(0).toUpperCase()
+    console.log(firstInitial)
+    const targetArray = contacts[firstInitial]
+    console.log([...targetArray])
+    const contactToModify = contacts[firstInitial].findIndex(
+      (item) => item.id === currentContact.id
+    )
+
+    setContact({
+      ...contacts,
+      [firstInitial]: [
+        ...targetArray.map((item) =>
+          item.id === updatedContact.id ? updatedContact : item
+        ),
+      ],
+    })
+  }
+
   const deleteContact = (id, lastName) => {
     const firstInitial = lastName.charAt(0).toUpperCase()
     setContact({
@@ -64,6 +84,7 @@ const Contacts = () => {
   const closeContact = () => {
     setDisplayContact(false)
     setShowAddContact(true)
+    console.log(contacts)
   }
 
   const renderContacts = () => {
@@ -99,8 +120,8 @@ const Contacts = () => {
           ) : displayContact && editContact ? (
             <UpdateContactForm
               removeForm={removeForm}
-              addContact={addContact}
               currentContact={currentContact}
+              handleUpdateContact={handleUpdateContact}
             />
           ) : displayContact ? (
             <DisplayContact
