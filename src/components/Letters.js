@@ -1,5 +1,6 @@
 import React from "react"
 import styles from "./Letters.module.css"
+import PropTypes from "prop-types"
 
 const Letters = ({ contacts }) => {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
@@ -20,6 +21,10 @@ const Letters = ({ contacts }) => {
       ))}
     </div>
   )
+}
+
+Letters.propTypes = {
+  contacts: PropTypes.object.isRequired,
 }
 
 export default Letters

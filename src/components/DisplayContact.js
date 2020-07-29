@@ -1,6 +1,7 @@
 import React from "react"
 import styles from "./DisplayContact.module.css"
 import Button from "./Button"
+import PropTypes from "prop-types"
 
 const DisplayContact = ({
   currentContact: { id, firstName, lastName },
@@ -17,5 +18,12 @@ const DisplayContact = ({
     <Button handleClick={() => editCurrentContact()} text="Edit" />
   </div>
 )
+
+DisplayContact.propTypes = {
+  currentContact: PropTypes.object.isRequired,
+  closeContact: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+  editCurrentContact: PropTypes.func.isRequired,
+}
 
 export default DisplayContact

@@ -2,6 +2,7 @@ import React from "react"
 import "../components/Contact"
 import styles from "./Contacts.module.css"
 import Contact from "../components/Contact"
+import PropTypes from "prop-types"
 
 const ContactsCategory = ({ contacts, letter, showContact }) => {
   return (
@@ -23,6 +24,12 @@ const ContactsCategory = ({ contacts, letter, showContact }) => {
       })}
     </div>
   )
+}
+
+ContactsCategory.propTypes = {
+  contacts: PropTypes.object.isRequired,
+  letter: PropTypes.string.isRequired,
+  showContact: PropTypes.func.isRequired,
 }
 
 export default ContactsCategory

@@ -33,15 +33,8 @@ const Contacts = () => {
   }
 
   const handleUpdateContact = (updatedContact, currentContact) => {
-    console.log(updatedContact)
     const firstInitial = currentContact.lastName.charAt(0).toUpperCase()
-    console.log(firstInitial)
     const targetArray = contacts[firstInitial]
-    console.log([...targetArray])
-    const contactToModify = contacts[firstInitial].findIndex(
-      (item) => item.id === currentContact.id
-    )
-
     setContact({
       ...contacts,
       [firstInitial]: [

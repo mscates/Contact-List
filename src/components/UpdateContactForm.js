@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styles from "./ContactForm.module.css"
 import Button from "./Button"
+import PropTypes from "prop-types"
 
 const UpdateContactForm = ({
   currentContact,
@@ -57,6 +58,12 @@ const UpdateContactForm = ({
       <Button handleClick={removeForm} text="Cancel" />
     </form>
   )
+}
+
+UpdateContactForm.propTypes = {
+  currentContact: PropTypes.object.isRequired,
+  removeForm: PropTypes.func.isRequired,
+  handleUpdateContact: PropTypes.func.isRequired,
 }
 
 export default UpdateContactForm
